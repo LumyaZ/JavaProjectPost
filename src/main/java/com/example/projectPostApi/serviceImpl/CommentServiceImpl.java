@@ -17,8 +17,8 @@ public class CommentServiceImpl implements CommentService {
     private CommentRepo CommentRepository;
 	
 	@Override
-    public Comment createComment(Comment commentaire) {
-        return CommentRepository.save(commentaire);
+    public Comment createComment(Comment comment) {
+        return CommentRepository.save(comment);
     }
 
     @Override
@@ -45,6 +45,6 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public List<Comment> getAllComments() {
         return CommentRepository.findAll();
-
 	}
+	
 }

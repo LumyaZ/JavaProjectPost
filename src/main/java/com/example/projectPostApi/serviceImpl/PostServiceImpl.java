@@ -1,7 +1,9 @@
 package com.example.projectPostApi.serviceImpl;
 
 import com.example.projectPostApi.entity.Post;
+import com.example.projectPostApi.repository.CommentRepo;
 import com.example.projectPostApi.repository.PostRepo;
+import com.example.projectPostApi.service.CommentService;
 import com.example.projectPostApi.service.PostService;
 
 import jakarta.transaction.Transactional;
@@ -17,6 +19,12 @@ public class PostServiceImpl implements PostService {
     
     @Autowired
     private PostRepo postRepository;
+    
+    @Autowired
+    private CommentService commentService;
+    
+    @Autowired
+    private CommentRepo commentRepository;
 
     @Override
     public Post createPost(Post post) {
@@ -48,6 +56,6 @@ public class PostServiceImpl implements PostService {
     public void deletePost(Long id) {
         Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
         postRepository.delete(post);
-    }
+    }    
 
 }

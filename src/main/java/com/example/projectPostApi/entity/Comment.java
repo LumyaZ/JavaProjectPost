@@ -9,6 +9,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,13 +26,16 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
+	@NotBlank(message =" Le commentaire doit avoir un body")
 	private String body;
 	
 	@NotBlank(message = "L'email ne peut être vide")
     @Email(message = "Un email valide" )
-    @Pattern(regexp = ".*\\.com$", message = "L'email doit se terminer par .com")
+    @Pattern(regexp = ".*\\.net$", message = "L'email doit se terminer par .net")
 	private String email;
 	
+	@NotBlank(message =" Le commentaire doit avoir un nom")
+    @Size(min = 3,message = "Le nom doit être plus grand que 3")
 	private String name;
 	
 	@ManyToOne
